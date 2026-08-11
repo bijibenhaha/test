@@ -1,0 +1,17 @@
+/Users/duqingyang/Desktop/JavaNewStart/cursor_generate/AggregatedSearch/backend/src/main/java/com/example/search/repository/PostRepository.java
+/Users/duqingyang/Desktop/JavaNewStart/cursor_generate/AggregatedSearch/backend/src/main/java/com/example/search/service/PictureSearchService.java
+/Users/duqingyang/Desktop/JavaNewStart/cursor_generate/AggregatedSearch/backend/src/main/java/com/example/search/dto/SearchPageVO.java
+/Users/duqingyang/Desktop/JavaNewStart/cursor_generate/AggregatedSearch/backend/src/main/java/com/example/search/config/WebConfig.java
+/Users/duqingyang/Desktop/JavaNewStart/cursor_generate/AggregatedSearch/backend/src/main/java/com/example/search/repository/UserRepository.java
+/Users/duqingyang/Desktop/JavaNewStart/cursor_generate/AggregatedSearch/backend/src/main/java/com/example/search/common/Result.java
+/Users/duqingyang/Desktop/JavaNewStart/cursor_generate/AggregatedSearch/backend/src/main/java/com/example/search/dto/PictureSearchItemVO.java
+/Users/duqingyang/Desktop/JavaNewStart/cursor_generate/AggregatedSearch/backend/src/main/java/com/example/search/entity/Picture.java
+/Users/duqingyang/Desktop/JavaNewStart/cursor_generate/AggregatedSearch/backend/src/main/java/com/example/search/entity/User.java
+/Users/duqingyang/Desktop/JavaNewStart/cursor_generate/AggregatedSearch/backend/src/main/java/com/example/search/controller/SearchController.java
+/Users/duqingyang/Desktop/JavaNewStart/cursor_generate/AggregatedSearch/backend/src/main/java/com/example/search/dto/PostSearchItemVO.java
+/Users/duqingyang/Desktop/JavaNewStart/cursor_generate/AggregatedSearch/backend/src/main/java/com/example/search/SearchApplication.java
+/Users/duqingyang/Desktop/JavaNewStart/cursor_generate/AggregatedSearch/backend/src/main/java/com/example/search/repository/PictureRepository.java
+/Users/duqingyang/Desktop/JavaNewStart/cursor_generate/AggregatedSearch/backend/src/main/java/com/example/search/entity/Post.java
+/Users/duqingyang/Desktop/JavaNewStart/cursor_generate/AggregatedSearch/backend/src/main/java/com/example/search/dto/UserSearchItemVO.java
+/Users/duqingyang/Desktop/JavaNewStart/cursor_generate/AggregatedSearch/backend/src/main/java/com/example/search/service/PostSearchService.java
+/Users/duqingyang/Desktop/JavaNewStart/cursor_generate/AggregatedSearch/backend/src/main/java/com/example/search/service/UserSearchService.java

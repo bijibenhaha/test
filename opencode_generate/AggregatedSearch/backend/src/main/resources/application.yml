@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: aggregated-search
+  # 数据源配置（MySQL）
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/my_db?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: john123!
+  # Elasticsearch 配置
+  elasticsearch:
+    uris: http://localhost:9200
+
+server:
+  port: 8101
+  servlet:
+    context-path: /api
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      # 全局逻辑删除字段
+      logic-delete-field: isDelete
+      logic-delete-value: 1
+      logic-not-delete-value: 0
