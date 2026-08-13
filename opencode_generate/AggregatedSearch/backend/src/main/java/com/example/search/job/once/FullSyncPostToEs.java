@@ -2,9 +2,10 @@ package com.example.search.job.once;
 
 import cn.hutool.core.collection.CollUtil;
 import com.example.search.esdao.PostEsDao;
+import com.example.search.mapper.PostMapper;
 import com.example.search.model.dto.post.PostEsDTO;
 import com.example.search.model.entity.Post;
-import com.example.search.service.PostService;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.annotation.Resource;
@@ -20,14 +21,15 @@ import org.springframework.stereotype.Component;
 public class FullSyncPostToEs implements CommandLineRunner {
 
     @Resource
-    private PostService postService;
+    private PostMapper postMapper;
 
     @Resource
     private PostEsDao postEsDao;
 
     @Override
     public void run(String... args) {
-        List<Post> postList = postService.list();
+        // 全量同步，包含逻辑删除的帖子，保证删除状态同步到 ES
+        List<Post> postList = postMapper.listPostWithDelete(new Date(0));
         if (CollUtil.isEmpty(postList)) {
             log.info("FullSyncPostToEs skip, no post");
             return;

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 每 60 秒增量同步帖子到 ES
+ * 但是项目在启动后很快会触发一次
  */
 @Component
 @Slf4j
