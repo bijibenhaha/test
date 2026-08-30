@@ -27,6 +27,7 @@ public class PostSourceImpl implements DataSource<PostVO> {
         postQueryRequest.setPageSize((int) pageSize);
         // 从 ES 获取 post
         Page<Post> postPage = postService.searchFromEs(postQueryRequest);
+        // 从 mysql 获取 post
         return postService.getPostVOPage(postPage, null);
     }
 }
