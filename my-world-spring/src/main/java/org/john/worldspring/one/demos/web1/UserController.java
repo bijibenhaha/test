@@ -63,7 +63,7 @@ public class UserController {
         account.setBalance(BigDecimal.ZERO);
         account.setCreateTime(LocalDateTime.now());
 
-        userService.createUserWithAccountWrapper(user, account);
+        userService.createUserWithAccountTransactionalFail(user, account);
 
         return R.ok("用户和账户新增成功");
     }

@@ -28,9 +28,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      * 【事务失效版】通过 this 内部调用，绕过了 AOP 代理，@Transactional 被无视
      */
     @Override
-
-    public void createUserWithAccountWrapper(User user, Account account) {
+    public void createUserWithAccountTransactionalFail(User user, Account account) {
         // 等效于直接调用了原始对象的 createUserWithAccount()，没有经过代理
-            this.createUserWithAccount(user, account);
+            createUserWithAccount(user, account);
     }
 }

@@ -6,5 +6,5 @@ public interface UserService extends IService<User> {
 
     void createUserWithAccount(User user, Account account);
 
-    void createUserWithAccountWrapper(User user, Account account);
+    void createUserWithAccountTransactionalFail(User user, Account account);
 }
