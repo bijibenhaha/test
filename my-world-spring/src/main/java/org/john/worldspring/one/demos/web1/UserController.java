@@ -40,6 +40,23 @@ public class UserController {
         return R.ok(user);
     }
 
+    @GetMapping("/{id}")
+    public R<User> get(@PathVariable long id) {
+        User user = userService.getById(id);
+        if (user == null) {
+            return R.fail("用户不存在");
+        }
+        return R.ok(user);
+    }
+
+    @GetMapping("/page")
+    public R<List<User>> page(
+            @RequestParam(defaultValue = "1") int current,
+            @RequestParam(defaultValue = "10") int size) {
+        Page<User> page = userService.page(new Page<>(current, size));
+        return R.ok(page.getRecords());
+    }
+
     /**
      * 测试事务回滚（✅ 正常版）：通过代理调用，事务生效
      */
@@ -68,20 +85,12 @@ public class UserController {
         return R.ok("用户和账户新增成功");
     }
 
-    @GetMapping("/{id}")
-    public R<User> get(@PathVariable long id) {
-        User user = userService.getById(id);
-        if (user == null) {
-            return R.fail("用户不存在");
-        }
-        return R.ok(user);
-    }
-
-    @GetMapping("/page")
-    public R<List<User>> page(
-            @RequestParam(defaultValue = "1") int current,
-            @RequestParam(defaultValue = "10") int size) {
-        Page<User> page = userService.page(new Page<>(current, size));
-        return R.ok(page.getRecords());
+    /**
+     * LambdaQueryWrapper 查询：年龄>20，姓名不为空，按创建时间倒序，取前10条
+     */
+    @GetMapping("/top10")
+    public R<List<User>> top10() {
+        List<User> users = userService.queryTop10ByCondition();
+        return R.ok(users);
     }
 }
