@@ -4,7 +4,7 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * 演示多线程下 num++ 的线程安全问题（ThreadPoolExecutor 版本）
+ * 多线程下 num++ 的线程安全问题（ThreadPoolExecutor 版本）
  */
 class Count {
     private int num = 0;
@@ -19,10 +19,6 @@ class Count {
 
     // ========== synchronized 修复 ==========
     private int syncedNum = 0;
-
-
-
-
 
     public synchronized void syncedAdd() {
         syncedNum++;
