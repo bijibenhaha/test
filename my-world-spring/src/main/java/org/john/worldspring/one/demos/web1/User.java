@@ -1,9 +1,6 @@
 package org.john.worldspring.one.demos.web1;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import javax.validation.constraints.Max;
@@ -34,6 +31,9 @@ public class User {
     private String phone;
 
     private LocalDateTime createTime;
+
+    @TableLogic
+    private int isDeleted;
 
     public User() {
     }
