@@ -21,20 +21,16 @@ public class User {
 
     @NotBlank(message = "username不能为空")
     @Size(max = 32, message = "username长度不能超过32")
-    @TableField("username")
     private String username;
 
     @NotNull(message = "age不能为空")
     @Min(value = 1, message = "age范围1-120")
     @Max(value = 120, message = "age范围1-120")
-    @TableField("age")
     private Integer age;
 
     @Pattern(regexp = "^1[3-9]\\d{9}$", message = "phone格式不正确")
-    @TableField("phone")
     private String phone;
 
-    @TableField("create_time")
     private LocalDateTime createTime;
 
     public User() {
