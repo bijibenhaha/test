@@ -11,17 +11,26 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Autowired
     private AccountMapper accountMapper;
 
+    /**
+     * 【事务生效版】直接调用，经过 AOP 代理，事务生效
+     */
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void createUserWithAccount(User user, Account account) {
-        // 1. 新增用户
         save(user);
-
-        // 2. 模拟异常，验证是否回滚
+        // 模拟异常
         int i = 1 / 0;
-
-        // 3. 新增账户记录
         account.setUserId(user.getId());
         accountMapper.insert(account);
+    }
+
+    /**
+     * 【事务失效版】通过 this 内部调用，绕过了 AOP 代理，@Transactional 被无视
+     */
+    @Override
+
+    public void createUserWithAccountWrapper(User user, Account account) {
+        // 等效于直接调用了原始对象的 createUserWithAccount()，没有经过代理
+            this.createUserWithAccount(user, account);
     }
 }

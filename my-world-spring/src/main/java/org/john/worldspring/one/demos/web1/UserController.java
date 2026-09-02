@@ -41,8 +41,7 @@ public class UserController {
     }
 
     /**
-     * 测试事务回滚：新增用户 + 模拟异常 + 新增账户
-     * 观察：异常发生后 user 是否也被回滚
+     * 测试事务回滚（✅ 正常版）：通过代理调用，事务生效
      */
     @PostMapping("/with-account")
     public R<String> addWithAccount(@Valid @RequestBody User user) {
@@ -51,6 +50,20 @@ public class UserController {
         account.setCreateTime(LocalDateTime.now());
 
         userService.createUserWithAccount(user, account);
+
+        return R.ok("用户和账户新增成功");
+    }
+
+    /**
+     * 测试事务失效（❌ this.xxx 版）：内部调用绕过代理，事务不生效
+     */
+    @PostMapping("/with-account-fail")
+    public R<String> addWithAccountFail(@Valid @RequestBody User user) {
+        Account account = new Account();
+        account.setBalance(BigDecimal.ZERO);
+        account.setCreateTime(LocalDateTime.now());
+
+        userService.createUserWithAccountWrapper(user, account);
 
         return R.ok("用户和账户新增成功");
     }
