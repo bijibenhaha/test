@@ -6,6 +6,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 /**
  * 题目1【SpringBoot项目搭建+CRUD】
@@ -36,6 +38,21 @@ public class UserController {
             return R.fail("新增用户失败");
         }
         return R.ok(user);
+    }
+
+    /**
+     * 测试事务回滚：新增用户 + 模拟异常 + 新增账户
+     * 观察：异常发生后 user 是否也被回滚
+     */
+    @PostMapping("/with-account")
+    public R<String> addWithAccount(@Valid @RequestBody User user) {
+        Account account = new Account();
+        account.setBalance(BigDecimal.ZERO);
+        account.setCreateTime(LocalDateTime.now());
+
+        userService.createUserWithAccount(user, account);
+
+        return R.ok("用户和账户新增成功");
     }
 
     @GetMapping("/{id}")

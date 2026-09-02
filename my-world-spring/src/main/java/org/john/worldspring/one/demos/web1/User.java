@@ -18,12 +18,11 @@ public class User {
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
+
     @NotBlank(message = "username不能为空")
     @Size(max = 32, message = "username长度不能超过32")
     @TableField("username")
     private String username;
-
-
 
     @NotNull(message = "age不能为空")
     @Min(value = 1, message = "age范围1-120")
